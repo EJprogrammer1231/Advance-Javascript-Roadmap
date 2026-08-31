@@ -4,9 +4,9 @@ function myMap(array,callback) {
   let newValue = [];
 
   for (let i = 0; i < array.length; i++) {
-    if (callback(array[i])) {
-      newValue.push(array[i]);
-    }
+    const result = callback(array[i]);
+
+    newValue.push(result);
   }
 
   return newValue;
