@@ -27,6 +27,14 @@ function createCompany() {
       return findName;
     },
 
+    filterEmployee(callback) {
+      const allEmployee = employees.filter(employee => {
+        return callback(employee);
+      });
+
+      return allEmployee;
+    },
+
     showCompanies(employee = employees) {
       const findName = employee.map(emp => {
         return `
@@ -40,9 +48,15 @@ function createCompany() {
   };
 };
 
+function highSalary(employee) {
+  return employee.salary >= 25000;
+}
+
 const company = createCompany();
 
 company.addCompany("Eljay", "SF" , 25000);
 company.addCompany("JE", "JR SF" , 20000);
+company.addCompany("Anna", "UI Designer", 30000);
+company.addCompany("John", "Backend Developer", 35000);
 
-console.log(company.findEmployee("JE"));
+console.log(company.filterEmployee(highSalary));
