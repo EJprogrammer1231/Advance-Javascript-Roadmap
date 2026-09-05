@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <h1>EMPLOYEE MANAGEMENT SYSTEM</h1>
+  </header>
+
+  <main class="main-form">
+    <header>
+      <h1>Add Employee</h1>
+    </header>
+    <form class="form" id="employees-submit">
+      <label for="name">Name</label>
+      <input 
+      id="input-name"
+      type="text"
+      >
+      <label for="name">Position</label>
+      <input 
+      id="input-position"
+      type="text"
+      >
+      <label for="name">Salary</label>
+      <input 
+      id="input-salary"
+      type="number"
+      >
+      <button type="submit">Add Employee</button>
+    </form>
+  </main>
+
+  <section class="stats-section">
+    <header>
+      <h1>Employee Statistics</h1>
+    </header>
+
+    <section class="nested-section">
+
+        <div>
+          <h2>Total Employees</h2> 
+          <span id="total-employee">0</span>
+        </div>
+
+        <div>
+          <h2>Total Salary</h2> 
+          <span id="total-salary">0</span>
+        </div>
+
+        <div>
+          <h2>Highest Salary</h2> 
+          <span id="highest-salary">0</span>
+        </div>
+
+        <div>
+          <h2>Average Salary</h2> 
+          <span id="average-salary">0</span>
+        </div>
+
+      </section>
+
+  </section>
+
+  <section class="list-section">
+    <header>
+      <h1>Employee List</h1>
+    </header>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="employees-list"></tbody>
+    </table>
+  </section>
+
+  <script src="js/storage.js"></script>
+  <script src="js/statistics.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
