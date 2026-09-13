@@ -44,22 +44,89 @@ function createNewEmployees() {
       return employees;
     },
     employeeStatistics() {
+      // total employee
       const totalEmployee = employees.length;
+      
+      // active employee
+      const activeEmployee = employees
+      .filter(active => active.status === "Active")
+      .reduce((total) => total + 1 , 0);
 
-      // next
+      // Inactive employee
+      const inactiveEmployee = employees
+      .filter(inactive => inactive.status === "Inactive")
+      .reduce((total) => total + 1 , 0);
+      
+      const totalPayroll = employees.reduce((total,payroll) => {
+        return total += payroll.salary;
+      }, 0);
+
+      const averageSalary = totalPayroll / employees.length;
+
       return {
-        totalEmployee
+        totalEmployee,
+        activeEmployee,
+        inactiveEmployee,
+        totalPayroll,
+        averageSalary
       };
     },
+    employeeReport() {
+      const reportEmployee = employees.map(list => {
+        const reportDataList = {
+          id: list.id,
+          name: list.name,
+          department:  list.department,
+          salary: list.salary,
+          status: list.status
+        }
+
+        return reportDataList;
+      });
+
+      return reportEmployee;
+    },
+
+    // High order
+    processEmployees(callback) {
+      let employeeNew = [];
+
+      for (let i = 0; i < employees.length; i++) {
+        employeeNew.push(callback(employees[i]));
+      }
+
+      return employeeNew;
+    },
+
+    calculateBonuses(...bonuses) {
+      const calculateBonus = bonuses.reduce((total,bonus) => {
+        return total + bonus;
+      }, 0);
+
+      return calculateBonus;
+    },
+
     getEmployees() {
       return employees;
     } 
   }
 }
 
+// Function return methods : Closure
 const create = createNewEmployees();
+
+// Create new Employee List
 create.employee(1, "Eljay", "Software Engineer", "IT", 25000, "Active");
 create.employee(2, "Gon", "Software Engineer", "IT", 20000, "Inactive");
 create.employee(3, "JE", "QA", "HR", 15000, "Active");
 
-console.log(create.employeeStatistics());
+// Test rest parameters
+console.log(create.calculateBonuses(1000, 2000, 3000));
+
+// Calling the methods actions
+//console.log(create.employeeReport());
+
+// callback : High Order Funtions
+create.processEmployees(employee => {
+  return employee.name;
+});
