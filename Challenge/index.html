@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h1>Employee Management System</h1>
+  </header>
+
+  <section>
+    <div>
+      <h2>Total Employees</h2>
+      <span id="total-employees">0</span>
+    </div>
+    <div>
+      <h2>Active Employees</h2>
+      <span id="active-employees">0</span>
+    </div>
+    <div>
+      <h2>Inactive Employees</h2>
+      <span id="inactive-employees">0</span>
+    </div>
+    <div>
+      <h2>Total Payroll</h2>
+      <span id="total-payroll">0</span>
+    </div>
+  </section>
+
+  <main>
+    <form id="main-form">
+      <input 
+      type="text" 
+      name="name" 
+      id="input-name" 
+      placeholder="Enter name"
+      >
+      <input 
+      type="text" 
+      name="position" 
+      id="input-position" 
+      placeholder="Enter position"
+      >
+      <input 
+      type="text" 
+      name="department" 
+      id="input-department" 
+      placeholder="Enter department"
+      >
+      <input 
+      type="number" 
+      name="salary" 
+      id="input-salary" 
+      placeholder="Enter salary"
+      >
+
+      <select id="status">
+        <option disabled selected>Status</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+
+      <button type="submit">Add Employee</button>
+    </form>
+
+    <section>
+      <input 
+      type="search" 
+      placeholder="Search...."
+      >
+      <select name="department" id="department">
+        <option value="all-Departments">All Departments</option>
+        <option value="it">IT</option>
+        <option value="hr">HR</option>
+        <option value="finance">Finance</option>
+      </select>
+    </section>
+  </main>
+
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Department</th>
+          <th>Salary</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <!-- The List will come here -->
+      <tbody id="display-employees"></tbody>
+    </table>
+  </section>
+
+  <script src="js/statistics.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
