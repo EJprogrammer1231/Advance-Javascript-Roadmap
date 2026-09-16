@@ -106,10 +106,53 @@ function createNewEmployees() {
       return calculateBonus;
     },
 
+    employeeSummary(id) {
+      const employeeId = employees.find(empId => empId.id === id);
+
+      const {name,position,department,salary} = employeeId;
+
+      return {
+        name,
+        position,
+        department,
+        salary
+      }
+    },
+
+    updateEmployeeDepartment(id, newDepartment) {
+      const employeeId = employees.find(empid => empid.id === id);
+
+      const newEmployee = {...employeeId};
+
+      return {
+        ...newEmployee,
+        department: newDepartment
+      }
+    },
+
+    createSalaryCalculator(rate) {
+      return function(salary) {
+        return salary * rate;
+      }
+    },
+
+    employeeIntroduction() {
+      const names = this.getEmployees().map((employee) => {
+        return employee.name;
+      });
+
+      return names;
+    },
+
     getEmployees() {
       return employees;
     } 
   }
+}
+
+// Reusable function
+function introduceEmployee(role) {
+
 }
 
 // Function return methods : Closure
@@ -120,8 +163,8 @@ create.employee(1, "Eljay", "Software Engineer", "IT", 25000, "Active");
 create.employee(2, "Gon", "Software Engineer", "IT", 20000, "Inactive");
 create.employee(3, "JE", "QA", "HR", 15000, "Active");
 
-// Test rest parameters
-console.log(create.calculateBonuses(1000, 2000, 3000));
+// Test
+console.log(create.employeeIntroduction());
 
 // Calling the methods actions
 //console.log(create.employeeReport());
