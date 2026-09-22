@@ -72,7 +72,13 @@ const employeeManager = {
     },
 
     updateSalary(name, amount) {
+        const updateEmployee = this.employees.find(employee => employee.name === name);
 
+        this.amount = amount;
+
+        this.amount = this.amount - updateEmployee.salary
+
+        return this.amount;
     },
 
     changeEmployeeStatus(name, newStatus) {
@@ -91,3 +97,4 @@ console.log(employeeManager.getTotalPayroll());
 console.log(employeeManager.getAverageSalary());
 console.log(employeeManager.getEmployeeNames());
 console.log(employeeManager.getEmployeeReport());
+console.log(employeeManager.updateSalary("Sarah", 18000));
